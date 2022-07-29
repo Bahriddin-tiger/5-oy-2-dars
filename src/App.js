@@ -1,5 +1,6 @@
 import List from "./components/List/List";
 import Item from "./components/Item/Item";
+
 import "./components/containe.css";
 import {useState} from "react";
 // import { toBeInTheDocument } from "@testing-library/jest-dom/dist/matchers";66
@@ -26,7 +27,7 @@ function App() {
   return (
     <div className="App">
  
-   <form className="container" onSubmit={(evt)=>{
+   <form className="container"  onSubmit={(evt)=>{
     evt.preventDefault();
     setTodo([
       ...todo,{
