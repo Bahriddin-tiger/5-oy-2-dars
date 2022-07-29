@@ -40,11 +40,11 @@ function App() {
      <button  type="onSubmit " > add</button>
     
    </form>
-   {todo.map((e)=>{
+   {/* {todo.map((e)=>{
     count++;
     e.id=count;
     // console.log(e);
-})}
+})} */}
 <List >
  {
  
