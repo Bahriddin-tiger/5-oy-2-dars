@@ -1,43 +1,53 @@
 import List from "./components/List/List";
 import Item from "./components/Item/Item";
-
 import "./components/containe.css";
 import {useState} from "react";
-// import { toBeInTheDocument } from "@testing-library/jest-dom/dist/matchers";66
+import "./components/Item/item.css"
 
 function App() {
- 
+
  const [todo,setTodo]=useState( [
   {
+   id:0,
     name:"uxalsh",
     isComplate:false,
   },
    {
+    id:1,
     name:"kitob oqish",
     isComplate:false,
   },
   {
+    id:2,
     name:"uxlash",
     isComplate:true,
   }
  ])
 
   // const[value,setValue]=useState("")
-  let count= 0; 
+ 
   return (
     <div className="App">
  
-   <form className="container"  onSubmit={(evt)=>{
+   <form className="container form" autoComplete="off" onSubmit={(evt)=>{
     evt.preventDefault();
-    setTodo([
-      ...todo,{
-        id:count++,
-        name:evt.target[0].value,
-        isComplate:false,
-      },   ]);
+
+    if(evt.target[0].value !== ""){
+  
+
+      setTodo([
+        ...todo,{
+          id:todo.at(-1).id ? todo.at(-1).id+1 : 1,
+          name:evt.target[0].value,
+          isComplate:false,
+        },   ]);
+    }
+   
+
+      evt.target[0].value ="";
     }}>
-     <input className="Input " placeholder="textt" type="text" name="text" />
-     <button  type="onSubmit " > add</button>
+     <input className="Input " placeholder="Text" type="text" name="text" maxLength={30} />
+     <button className="onbtn"  type="onSubmit " > ADD </button>
     
    </form>
    {/* {todo.map((e)=>{
@@ -48,10 +58,11 @@ function App() {
 <List >
  {
  
-  todo.map((e,index) =>(
-    <li key={index}>
+  todo.map((e) =>(
+    <li className="item" key={e.id}>
 
       <Item   text={e.name} isComplate={e.isComplate} id={e.id} />
+   
     </li>
   ))
  }

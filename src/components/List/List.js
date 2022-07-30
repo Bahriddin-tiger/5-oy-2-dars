@@ -1,8 +1,9 @@
-import "../containe.css"
+import "../containe.css";
+import "./List.css"
 
 const List =({children}) =>{
     return(
-    <ul className="elList container">
+    <ul className=" container elList">
         {children}
     </ul>
     )

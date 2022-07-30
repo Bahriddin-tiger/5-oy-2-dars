@@ -1,0 +1,13 @@
+.elList{
+    margin: 0 auto;
+    padding: 20px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: #907272; */
+    /* border: 2px solid #fff; */
+    /* border-radius: 10px; */
+   
+}
