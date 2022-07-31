@@ -1,12 +1,13 @@
-import List from "./components/List/List";
-import Item from "./components/Item/Item";
-import "./components/containe.css";
+import { List } from "./components";
+import { Item } from "./components";
 import {useState} from "react";
+import "./components/containe.css";
 import "./components/Item/item.css"
+import "./App.css"
 
 function App() {
 
- const [todo,setTodo]=useState( [
+ const [todo,setTodo]=useState(JSON.parse(window.localStorage.getItem("todo")) || [
   {
    id:0,
     name:"uxalsh",
@@ -19,13 +20,13 @@ function App() {
   },
   {
     id:2,
-    name:"uxlash",
+    name:"yugurish",
     isComplate:true,
   }
- ])
 
-  // const[value,setValue]=useState("")
- 
+ ]) 
+
+
   return (
     <div className="App">
  
@@ -41,6 +42,7 @@ function App() {
           name:evt.target[0].value,
           isComplate:false,
         },   ]);
+        window.localStorage.setItem("todo",JSON.stringify(todo))
     }
    
 
@@ -50,18 +52,13 @@ function App() {
      <button className="onbtn"  type="onSubmit " > ADD </button>
     
    </form>
-   {/* {todo.map((e)=>{
-    count++;
-    e.id=count;
-    // console.log(e);
-})} */}
 <List >
  {
  
   todo.map((e) =>(
     <li className="item" key={e.id}>
 
-      <Item   text={e.name} isComplate={e.isComplate} id={e.id} />
+      <Item   item={e} todo={todo} setTodo={setTodo} />
    
     </li>
   ))
